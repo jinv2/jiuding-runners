@@ -1,0 +1,704 @@
+/* ========== 童话·天真·浪漫·体育·山海经·机器人 ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+body {
+    font-family: 'Ma Shan Zheng', 'ZCOOL KuaiLe', 'Noto Sans SC', cursive, sans-serif;
+    background: linear-gradient(145deg, #f0e6d3 0%, #e8d5b5 30%, #d4c4a8 60%, #c9bda0 100%);
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* 童话云朵背景 */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 10% 20%, rgba(255, 240, 200, 0.4) 0%, transparent 30%),
+        radial-gradient(circle at 90% 70%, rgba(200, 230, 255, 0.4) 0%, transparent 35%),
+        radial-gradient(circle at 30% 80%, rgba(255, 220, 180, 0.3) 0%, transparent 40%),
+        radial-gradient(circle at 70% 15%, rgba(220, 255, 220, 0.3) 0%, transparent 30%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* 手绘风格星星 */
+.magic-star {
+    position: fixed;
+    color: #ffb703;
+    opacity: 0.6;
+    font-size: 20px;
+    animation: twinkle 3s infinite ease-in-out;
+    z-index: 0;
+    pointer-events: none;
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: scale(1.2);
+    }
+}
+
+#app {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: 260px 1fr 260px;
+    gap: 20px;
+}
+
+/* ========== 童话卡片通用样式 ========== */
+.story-card {
+    background: rgba(255, 251, 240, 0.75);
+    backdrop-filter: blur(8px);
+    border-radius: 32px;
+    padding: 20px;
+    border: 3px solid #f5d5a0;
+    box-shadow:
+        0 10px 0 #b8956a,
+        0 15px 30px rgba(120, 80, 50, 0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.story-card:hover {
+    transform: translateY(-5px);
+    box-shadow:
+        0 15px 0 #b8956a,
+        0 20px 40px rgba(120, 80, 50, 0.2);
+}
+
+/* ========== LOGO区域 ========== */
+.logo-container {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.logo-link {
+    display: inline-block;
+    border-radius: 50%;
+    overflow: hidden;
+    width: 60px;
+    height: 60px;
+    border: 4px solid #ff9f1c;
+    box-shadow: 0 0 25px rgba(255, 159, 28, 0.5), 0 5px 0 #c1121f;
+    background: #fff9e6;
+    transition: transform 0.3s ease;
+}
+
+.logo-link:hover {
+    transform: rotate(5deg) scale(1.05);
+}
+
+.logo-link img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.logo-title {
+    font-family: 'ZCOOL KuaiLe', cursive;
+    font-size: 2.2rem;
+    color: #5c3a21;
+    text-shadow: 4px 4px 0 #ffd699, 0 0 20px #ffe0a0;
+    letter-spacing: 4px;
+}
+
+/* ========== 左侧边栏 ========== */
+.sidebar-left {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.panel-title {
+    font-family: 'ZCOOL KuaiLe', cursive;
+    font-size: 1.5rem;
+    color: #5c3a21;
+    margin-bottom: 15px;
+    text-align: center;
+    text-shadow: 2px 2px 0 #ffd699;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.blackboard-list p {
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    background: rgba(200, 180, 150, 0.2);
+    border-radius: 20px 8px 20px 8px;
+    font-size: 1rem;
+    color: #4a2e1a;
+    border-left: 4px solid #ff9f1c;
+    transition: all 0.2s ease;
+}
+
+.blackboard-list p:hover {
+    background: rgba(255, 200, 120, 0.3);
+    transform: translateX(5px);
+}
+
+.lyrics-scroll p {
+    padding: 5px 0;
+    color: #5c3a21;
+    font-size: 1.05rem;
+    text-align: center;
+}
+
+/* ========== 中间区域 ========== */
+.agent-container {
+    grid-column: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.agent-header {
+    background: linear-gradient(135deg, #ffd699, #ffe6b3);
+    padding: 15px 25px;
+    border-radius: 60px;
+    border: 3px solid #ff9f1c;
+    box-shadow: 0 8px 0 #b8956a, 0 5px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.status-dot {
+    width: 16px;
+    height: 16px;
+    background: #2ecc71;
+    border-radius: 50%;
+    box-shadow: 0 0 15px #2ecc71;
+    animation: pulse-green 2s infinite;
+}
+
+@keyframes pulse-green {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.status-text {
+    font-family: 'Ma Shan Zheng', cursive;
+    font-size: 1.3rem;
+    color: #5c3a21;
+    font-weight: bold;
+}
+
+.chat-history {
+    background: rgba(255, 251, 240, 0.7);
+    backdrop-filter: blur(8px);
+    border-radius: 32px;
+    padding: 25px;
+    border: 3px solid #f5d5a0;
+    box-shadow: inset 0 0 20px rgba(255, 255, 200, 0.5), 0 8px 0 #b8956a;
+    min-height: 180px;
+}
+
+.message {
+    padding: 14px 20px;
+    margin-bottom: 15px;
+    border-radius: 30px 30px 30px 8px;
+    max-width: 85%;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 0 #b8956a;
+}
+
+.xuanjia-message {
+    background: #a8d8ea;
+    border: 3px solid #5a9fb5;
+    color: #1e3a5f;
+    border-radius: 30px 30px 8px 30px;
+}
+
+.user-message {
+    background: #ffe0a0;
+    border: 3px solid #ffb347;
+    color: #5c3a21;
+    margin-left: auto;
+    border-radius: 30px 8px 30px 30px;
+}
+
+/* 九大试炼卡片 */
+.trials-section-title {
+    font-family: 'ZCOOL KuaiLe', cursive;
+    font-size: 2rem;
+    color: #c1121f;
+    text-align: center;
+    text-shadow: 3px 3px 0 #ffd699;
+    margin: 10px 0;
+}
+
+.trials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin: 15px 0;
+}
+
+.trial-card {
+    background: linear-gradient(145deg, #fff3d1, #ffe6b3);
+    border-radius: 24px;
+    padding: 18px 12px;
+    border: 3px solid #ffb347;
+    box-shadow: 0 6px 0 #b8956a, 0 5px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.trial-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 0 #b8956a, 0 10px 20px rgba(0, 0, 0, 0.15);
+    background: #fff8e0;
+}
+
+.trial-card h4 {
+    font-family: 'ZCOOL KuaiLe', cursive;
+    font-size: 1.4rem;
+    color: #c1121f;
+    margin-bottom: 8px;
+    text-shadow: 1px 1px 0 #ffe0a0;
+}
+
+.trial-card p {
+    font-size: 0.9rem;
+    color: #4a2e1a;
+    line-height: 1.5;
+}
+
+/* 输入区 */
+.interaction-zone {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+#user-input {
+    flex: 1;
+    padding: 16px 22px;
+    background: #fffdf5;
+    border: 4px solid #ffb347;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    color: #4a2e1a;
+    outline: none;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05), 0 5px 0 #b8956a;
+    font-family: 'Ma Shan Zheng', cursive;
+}
+
+#user-input::placeholder {
+    color: #b0a090;
+}
+
+.btn-fairy {
+    padding: 16px 32px;
+    background: #ffb347;
+    border: 4px solid #ff9f1c;
+    border-radius: 50px;
+    color: #4a2e1a;
+    font-weight: bold;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 6px 0 #b8956a;
+    transition: all 0.1s ease;
+    font-family: 'ZCOOL KuaiLe', cursive;
+}
+
+.btn-fairy:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 9px 0 #b8956a;
+    background: #ffc067;
+}
+
+.btn-fairy:active {
+    transform: translateY(3px);
+    box-shadow: 0 3px 0 #b8956a;
+}
+
+/* 底部进度条 */
+.progress-fairy {
+    background: rgba(255, 240, 200, 0.8);
+    backdrop-filter: blur(8px);
+    border-radius: 40px;
+    padding: 15px 25px;
+    border: 3px solid #f5d5a0;
+    box-shadow: inset 0 0 15px #fff5e0, 0 5px 0 #b8956a;
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.2rem;
+    color: #5c3a21;
+    font-weight: bold;
+}
+
+/* 横排视频 */
+.video-fairy-section {
+    margin-top: 25px;
+}
+
+.video-fairy-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.video-fairy-item {
+    border-radius: 24px;
+    overflow: hidden;
+    border: 4px solid #ffb347;
+    box-shadow: 0 8px 0 #b8956a;
+    background: #fff9e6;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.video-fairy-item:hover {
+    transform: translateY(-5px);
+}
+
+.video-fairy-item iframe {
+    width: 100%;
+    height: 150px;
+    display: block;
+}
+
+.video-label {
+    text-align: center;
+    padding: 8px;
+    background: #ffd699;
+    color: #4a2e1a;
+    font-weight: bold;
+}
+
+/* ========== 右侧边栏 ========== */
+.sidebar-right {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.plaque-fairy {
+    background: #c9a87c;
+    padding: 15px 10px;
+    border-radius: 16px 16px 8px 8px;
+    border: 4px solid #a08060;
+    box-shadow: inset 0 -5px 0 #8a6a4a, 0 8px 0 #6a5035;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.plaque-fairy:hover {
+    transform: scale(1.02);
+}
+
+.plaque-fairy span {
+    font-family: 'ZCOOL KuaiLe', cursive;
+    font-size: 2.2rem;
+    color: #2c1a0a;
+    text-shadow: 2px 2px 0 #e0c090;
+    letter-spacing: 8px;
+}
+
+.btn-story {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    background: #a8d8ea;
+    border: 4px solid #5a9fb5;
+    border-radius: 30px;
+    font-family: 'ZCOOL KuaiLe', cursive;
+    font-size: 1.3rem;
+    color: #1e3a5f;
+    cursor: pointer;
+    box-shadow: 0 6px 0 #4a8090;
+    transition: all 0.1s;
+    margin: 15px 0;
+}
+
+.btn-story:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 9px 0 #4a8090;
+}
+
+/* ========== 异兽图鉴 ========== */
+.beasts-fairy {
+    grid-column: 1 / -1;
+    margin-top: 30px;
+}
+
+.beasts-scroll-fairy {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 20px 10px;
+}
+
+.beast-fairy-item {
+    flex-shrink: 0;
+    text-align: center;
+    width: 140px;
+    background: rgba(255, 251, 240, 0.7);
+    backdrop-filter: blur(8px);
+    border-radius: 30px;
+    padding: 20px 10px;
+    border: 4px solid #f5d5a0;
+    box-shadow: 0 8px 0 #b8956a;
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+.beast-fairy-item:hover {
+    transform: translateY(-5px);
+}
+
+.beast-fairy-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #ff9f1c;
+    box-shadow: 0 5px 0 #b8956a;
+    transition: transform 0.2s;
+}
+
+.beast-fairy-item h4 {
+    font-family: 'ZCOOL KuaiLe', cursive;
+    color: #c1121f;
+    margin: 10px 0 5px;
+    font-size: 1.4rem;
+}
+
+.beast-fairy-item p {
+    color: #4a2e1a;
+    font-size: 0.9rem;
+}
+
+/* ========== 弹窗 ========== */
+.fairy-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(60, 40, 20, 0.7);
+    backdrop-filter: blur(10px);
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+}
+
+.fairy-modal-content {
+    background: #fff9e6;
+    border-radius: 50px;
+    padding: 40px;
+    border: 6px solid #ffb347;
+    box-shadow: 0 20px 0 #8a6a4a, 0 30px 50px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.fairy-modal-content img {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 30px;
+    border: 5px solid #ff9f1c;
+}
+
+.fairy-modal-close {
+    float: right;
+    font-size: 50px;
+    cursor: pointer;
+    color: #c1121f;
+    line-height: 1;
+}
+
+/* ========== 页脚 ========== */
+.footer-fairy {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    color: #5c3a21;
+    font-size: 1rem;
+}
+
+/* ========== 响应式 ========== */
+@media (max-width: 1200px) {
+    #app {
+        grid-template-columns: 1fr;
+        padding: 15px;
+        gap: 25px;
+    }
+
+    .sidebar-left,
+    .sidebar-right,
+    .agent-container {
+        grid-column: 1;
+    }
+
+    .video-fairy-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .trials-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    #app {
+        padding: 10px;
+        gap: 20px;
+    }
+
+    .logo-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .logo-title {
+        font-size: 1.6rem;
+        letter-spacing: 2px;
+        line-height: 1.2;
+    }
+
+    .logo-link {
+        width: 50px;
+        height: 50px;
+    }
+
+    .trials-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .video-fairy-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .interaction-zone {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #user-input {
+        width: 100%;
+        font-size: 1rem;
+        padding: 14px 20px;
+    }
+
+    .btn-fairy {
+        width: 100%;
+        padding: 14px;
+        font-size: 1.1rem;
+    }
+
+    .progress-fairy {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+        font-size: 1rem;
+        border-radius: 24px;
+    }
+
+    .status-text {
+        font-size: 1.1rem;
+    }
+
+    .fairy-modal-content {
+        padding: 20px;
+        border-radius: 30px;
+        width: 95%;
+        margin: 0 10px;
+    }
+
+    .fairy-modal-close {
+        font-size: 40px;
+    }
+
+    .beast-fairy-item {
+        width: 130px;
+    }
+
+    .trials-section-title {
+        font-size: 1.5rem;
+    }
+
+    .agent-header {
+        padding: 12px 20px;
+    }
+}
+
+/* 异兽拼音样式 */
+.beast-pinyin {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 0.85rem;
+    color: #c1121f;
+    background: #ffeec2;
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 30px;
+    margin: 5px 0 8px;
+    letter-spacing: 1px;
+    border: 2px dotted #ff9f1c;
+}
+
+/* 调整间距，让对话和输入框更紧凑 */
+.trials-grid {
+    margin-bottom: 25px !important;
+}
+
+.chat-history {
+    margin-top: 0 !important;
+    margin-bottom: 15px !important;
+}
+
+.interaction-zone {
+    margin-top: 0 !important;
+    margin-bottom: 20px !important;
+}
+
+.progress-fairy {
+    margin-top: 5px !important;
+    margin-bottom: 25px !important;
+}

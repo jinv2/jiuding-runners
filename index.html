@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>九鼎 runners · 山海经童话</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- 魔法星星 -->
+    <div class="magic-star" style="top: 10%; left: 5%;">✨</div>
+    <div class="magic-star" style="top: 30%; right: 8%;">⭐</div>
+    <div class="magic-star" style="bottom: 20%; left: 15%;">🌟</div>
+    <div class="magic-star" style="top: 60%; right: 20%;">✨</div>
+    <div class="magic-star" style="bottom: 40%; right: 5%;">⭐</div>
+
+    <div id="app">
+        <!-- LOGO -->
+        <div class="logo-container">
+            <a href="https://shensist.top" target="_blank" class="logo-link">
+                <img src="assets/logo_ts.webp" alt="Shensist Logo">
+            </a>
+            <span class="logo-title">🏃 九鼎 runners · 山海经童话 🤖</span>
+        </div>
+
+        <!-- 左侧：黑板 -->
+        <aside class="sidebar-left">
+            <div class="story-card">
+                <div class="panel-title">📝 孩子们的黑板 📝</div>
+                <div class="blackboard-list" id="blackboard-list">
+                    <p>“跂踵的风，像刚晒过的被子。”</p>
+                    <p>“鸣蛇的歌里，有缝。”</p>
+                    <p>“水托住我了。”</p>
+                    <p>“吉量石测的是扶。”</p>
+                    <p>“鹿蜀不看我跳得好不好。”</p>
+                    <p>“旋龟教会我坐得住。”</p>
+                    <p>“毕方的火，跳过去就不怕。”</p>
+                    <p>“凤皇听见我心里唱的。”</p>
+                    <p>“应龙的雨里，有人接住我。”</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- 中间：玄甲 + 试炼 + 对话 + 视频 -->
+        <div class="agent-container">
+            <div class="agent-header">
+                <div class="status-dot"></div>
+                <span class="status-text">(咔嗒...) 玄甲正在记录你的脚印 ✨</span>
+            </div>
+
+            <!-- 九大试炼 · 山海之力 -->
+            <div class="trials-section-title">🏃 九大试炼 · 山海之力 🏃</div>
+            <div class="trials-grid" id="trials-grid">
+                <div class="trial-card" data-trial="跂踵之速"><h4>跂踵之速</h4><p>复州之山。跂踵跑起来，黄色的风在后面追。爷爷说：你越怕，风越快。跑起来，就行。</p></div>
+                <div class="trial-card" data-trial="鸣蛇之跃"><h4>鸣蛇之跃</h4><p>鲜山玉树。鸣蛇唱歌，歌里有缝。小满闭上眼，在歌声的缝隙里起跳。听，比跳更重要。</p></div>
+                <div class="trial-card" data-trial="蠃鱼之泳"><h4>蠃鱼之泳</h4><p>蒙水银波。蠃鱼没有腿，用浪前进。石头走进水里，水托住了他。他说：我有一条腿，够了。</p></div>
+                <div class="trial-card" data-trial="吉量石"><h4>吉量石</h4><p>犬封国丘陵。石头很重。胖墩学会了扶，小不点学会了拉手，默默看见了石头底下的小虫。</p></div>
+                <div class="trial-card" data-trial="鹿蜀之舞"><h4>鹿蜀之舞</h4><p>杻阳之山。鹿蜀跳舞，不看标不标准。芭蕾女孩不踮脚尖了，鹿蜀碰了她的额头。为自己跳。</p></div>
+                <div class="trial-card" data-trial="旋龟之静"><h4>旋龟之静</h4><p>怪水黑岸。旋龟不动，你也不动。坐得住，才听得见自己心里在说什么。</p></div>
+                <div class="trial-card" data-trial="毕方之火"><h4>毕方之火</h4><p>章莪之山。蓝色的火。怕的东西，跳过去，就不怕了。</p></div>
+                <div class="trial-card" data-trial="凤皇之鸣"><h4>凤皇之鸣</h4><p>丹穴之山。凤皇唱歌，你和。默默没有开口，凤皇碰了她的额头。心里唱的，它听见了。</p></div>
+                <div class="trial-card" data-trial="应龙之雨"><h4>应龙之雨</h4><p>凶犁土丘。大雨。一个接一个拉手，没有人松手。九鼎亮了。不是一个人集齐的。</p></div>
+            </div>
+
+            <!-- 对话区域 -->
+            <div class="chat-history" id="chat-history">
+                <div class="message xuanjia-message">🤖 你好。我是玄甲。门开着。</div>
+                <div class="message xuanjia-message">🏔️ 上面有九项试炼。点一下卡片，我告诉你。</div>
+            </div>
+
+            <!-- 输入框 -->
+            <div class="interaction-zone">
+                <input type="text" id="user-input" placeholder="写一句你想对爷爷说的话... 或回答玄甲" autocomplete="off">
+                <button class="btn-fairy" id="send-btn">✨ 提交 ✨</button>
+            </div>
+
+            <!-- 底部进度条 -->
+            <div class="progress-fairy">
+                <span>👣 今日脚印: <span id="footprint-count">127</span> 双</span>
+                <span>🟠 九鼎进度: <span id="trial-progress">0/9</span></span>
+                <span>⏳ 玄甲等了: <span id="wait-days">1095</span> 天</span>
+            </div>
+
+            <!-- 横排视频 -->
+            <div class="video-fairy-section">
+                <div class="trials-section-title">🎬 影像记忆 🎬</div>
+                <div class="video-fairy-grid">
+                    <div class="video-fairy-item" onclick="showVideoModal('BV1F9DHBWEY1')">
+                        <iframe src="https://player.bilibili.com/player.html?bvid=BV1F9DHBWEY1&page=1&high_quality=1&danmaku=0&autoplay=0" 
+                                allowfullscreen="true" 
+                                allow="fullscreen; autoplay; encrypted-media" 
+                                style="width:100%; height:150px; display: block; border: none; pointer-events: none;"
+                                scrolling="no" frameborder="0"></iframe>
+                        <div class="video-label">🎵 音乐版</div>
+                    </div>
+                    <div class="video-fairy-item" onclick="showVideoModal('BV1BZDHBDEv3')">
+                        <iframe src="https://player.bilibili.com/player.html?bvid=BV1BZDHBDEv3&page=1&high_quality=1&danmaku=0&autoplay=0" 
+                                allowfullscreen="true" 
+                                allow="fullscreen; autoplay; encrypted-media" 
+                                style="width:100%; height:150px; display: block; border: none; pointer-events: none;"
+                                scrolling="no" frameborder="0"></iframe>
+                        <div class="video-label">🎙️ 语音版</div>
+                    </div>
+                    <div class="video-fairy-item" onclick="showVideoModal('BV1ZZDHBSEGY')">
+                        <iframe src="https://player.bilibili.com/player.html?bvid=BV1ZZDHBSEGY&page=1&high_quality=1&danmaku=0&autoplay=0" 
+                                allowfullscreen="true" 
+                                allow="fullscreen; autoplay; encrypted-media" 
+                                style="width:100%; height:150px; display: block; border: none; pointer-events: none;"
+                                scrolling="no" frameborder="0"></iframe>
+                        <div class="video-label">📹 MV1 · 跂踵之速</div>
+                    </div>
+                    <div class="video-fairy-item" onclick="showVideoModal('BV1ZZDHBSEGZ')">
+                        <iframe src="https://player.bilibili.com/player.html?bvid=BV1ZZDHBSEGZ&page=1&high_quality=1&danmaku=0&autoplay=0" 
+                                allowfullscreen="true" 
+                                allow="fullscreen; autoplay; encrypted-media" 
+                                style="width:100%; height:150px; display: block; border: none; pointer-events: none;"
+                                scrolling="no" frameborder="0"></iframe>
+                        <div class="video-label">📹 MV2 · 鸣蛇之跃</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 右侧：武馆牌匾 + 小说 + 歌词 -->
+        <aside class="sidebar-right">
+            <div class="story-card">
+                <div class="plaque-fairy" onclick="alert('正——身正。稳——步稳。松——心松。')">
+                    <span>正 · 稳 · 松</span>
+                </div>
+                <h3 style="font-family: 'ZCOOL KuaiLe', cursive; color: #5c3a21; text-align: center; margin: 10px 0;">🏯 老严的武馆 🏯</h3>
+                <button class="btn-story" onclick="document.getElementById('novel-modal').style.display='flex'">📖 全屏阅读小说 📖</button>
+                <button class="btn-story" onclick="document.getElementById('lyrics-modal').style.display='flex'" style="background: #ffe0a0; border-color: #ffb347; color: #5c3a21; margin-top: 10px;">🎵 主题曲《跑起来就行》 🎵</button>
+                <p style="color: #5c3a21; text-align: center; font-style: italic; margin-top: 20px;">“进来。门没锁。”</p>
+                <p style="color: #8a6a4a; text-align: center;">—— 老严</p>
+            </div>
+        </aside>
+
+        <!-- 异兽图鉴 -->
+        <div class="beasts-fairy">
+            <div class="trials-section-title">✨ 山海经异兽图鉴 ✨</div>
+            <p style="text-align: center; color: #5c3a21; margin-bottom: 10px;">👆 点击图片可放大查看 👆</p>
+            <div class="beasts-scroll-fairy" id="beasts-scroll">
+                <div class="beast-fairy-item" onclick="showBeastModal(this)" data-beast="跂踵" data-desc="猫头鹰身，人面，狗尾。跑起来有黄色的风。"><img src="assets/跂踵.webp" alt="跂踵"><h4>跂踵</h4><p class="beast-pinyin">qǐ zhǒng</p><p>猫头鹰身，人面，狗尾。<br>跑起来有黄色的风。</p></div>
+                <div class="beast-fairy-item" onclick="showBeastModal(this)" data-beast="鸣蛇" data-desc="蛇身，四翼。唱歌像敲石头，歌里有缝。"><img src="assets/鸣蛇.webp" alt="鸣蛇"><h4>鸣蛇</h4><p class="beast-pinyin">míng shé</p><p>蛇身，四翼。<br>唱歌像敲石头，歌里有缝。</p></div>
+                <div class="beast-fairy-item" onclick="showBeastModal(this)" data-beast="蠃鱼" data-desc="鱼身，鸟翼。叫声像鸭子。用浪前进。"><img src="assets/蠃鱼.webp" alt="蠃鱼"><h4>蠃鱼</h4><p class="beast-pinyin">luǒ yú</p><p>鱼身，鸟翼。<br>叫声像鸭子。用浪前进。</p></div>
+                <div class="beast-fairy-item" onclick="showBeastModal(this)" data-beast="吉量" data-desc="马身，白首，红鬃，金眼。石头很重，测的是扶。"><img src="assets/吉量.webp" alt="吉量"><h4>吉量</h4><p class="beast-pinyin">jí liáng</p><p>马身，白首，红鬃，金眼。<br>石头很重，测的是扶。</p></div>
+                <div class="beast-fairy-item" onclick="showBeastModal(this)" data-beast="鹿蜀" data-desc="马身，白头，虎纹，红尾。唱歌像谣。不看跳得好不好。"><img src="assets/鹿蜀.webp" alt="鹿蜀"><h4>鹿蜀</h4><p class="beast-pinyin">lù shǔ</p><p>马身，白头，虎纹，红尾。<br>唱歌像谣。不看跳得好不好。</p></div>
+                <div class="beast-fairy-item" onclick="showBeastModal(this)" data-beast="旋龟" data-desc="鸟首，蛇尾。叫声像敲木头。比谁静得下来。"><img src="assets/旋龟.webp" alt="旋龟"><h4>旋龟</h4><p class="beast-pinyin">xuán guī</p><p>鸟首，蛇尾。<br>叫声像敲木头。比谁静得下来。</p></div>
+                <div class="beast-fairy-item" onclick="showBeastModal(this)" data-beast="毕方" data-desc="独腿，青羽，红斑。喷蓝色火。跳过去就不怕。"><img src="assets/毕方.webp" alt="毕方"><h4>毕方</h4><p class="beast-pinyin">bì fāng</p><p>独腿，青羽，红斑。<br>喷蓝色火。跳过去就不怕。</p></div>
+                <div class="beast-fairy-item" onclick="showBeastModal(this)" data-beast="凤皇" data-desc="鸡形，五色羽毛。自歌自舞。听得见心里唱的。"><img src="assets/凤皇.webp" alt="凤皇"><h4>凤皇</h4><p class="beast-pinyin">fèng huáng</p><p>鸡形，五色羽毛。<br>自歌自舞。听得见心里唱的。</p></div>
+                <div class="beast-fairy-item" onclick="showBeastModal(this)" data-beast="应龙" data-desc="有翼之龙。行雨。比谁接得住。"><img src="assets/应龙.webp" alt="应龙"><h4>应龙</h4><p class="beast-pinyin">yìng lóng</p><p>有翼之龙。<br>行雨。比谁接得住。</p></div>
+            </div>
+        </div>
+
+        <!-- 页脚 -->
+        <footer class="footer-fairy">
+            <p>《九鼎 runners》 · 出品人：金威 · © 2026 山海力·九鼎之约</p>
+            <p>🏛️ 神思庭 | 🌌 灵愿循环 · 官网｜shensist.top · 联络WX｜Shensi-ST</p>
+        </footer>
+    </div>
+
+    <!-- 弹窗部分 -->
+    <div id="novel-modal" class="fairy-modal">
+        <div class="fairy-modal-content" style="max-width: 800px; padding: 30px;">
+            <span class="fairy-modal-close" onclick="document.getElementById('novel-modal').style.display='none'">&times;</span>
+            <h2 style="font-family: 'ZCOOL KuaiLe', cursive; color: #c1121f; text-align: center; font-size: 2rem;">《九鼎 runners》</h2>
+            <div class="novel-full-text" style="max-height: 60vh; overflow-y: auto; padding-right: 10px; line-height: 1.9; color: #3a2010;">
+                <h3 style="color: #ff9f1c; margin-top: 20px;">第一章：跑起来就行</h3>
+                <p>老严退休那天，武馆的匾被摘了下来。</p>
+                <p>匾靠在墙角，上面写着三个字：正、稳、松。</p>
+                <p>老严在空院子里站了很久。然后他开始打拳。</p>
+                <p>很慢的拳。</p>
+                <p>慢到一只蝴蝶停在他肩膀上，打完一套才飞走。</p>
+                <p>墙头上趴着一个小孩。</p>
+                <p>“爷爷，你刚才打的什么？”</p>
+                <p>老严抹了一把汗：“九鼎 runners。”</p>
+                <p>小孩跳进院子，落地很轻：“我想学。”</p>
+                <p>老严看着天边红彤彤的火烧云，笑了：“那就跑起来吧。跑起来，就行。”</p>
+
+                <h3 style="color: #ff9f1c; margin-top: 20px;">第二章：风与跳跃</h3>
+                <p>九个孩子，九段路。小满分到的是“鸣蛇之跃”。</p>
+                <p>鸣蛇唱歌的时候，空气会抖动。老严说，看准那个抖动的缝隙，跳过去。小满练了一整个夏天。他发现，跳不只是腿的事，更是心的事。心静了，风就慢了。</p>
+
+                <h3 style="color: #ff9f1c; margin-top: 20px;">第三章：水中的力量</h3>
+                <p>胖墩最怕水。但在“蠃鱼之泳”里，他学会了把自己交给浪。水不是敌人，是托住你的手。那一刻，他跑得比在陆地上还快。</p>
+
+                <h3 style="color: #ff9f1c; margin-top: 20px;">第四章：石头的重量</h3>
+                <p>吉量石很沉，测的是“扶”。一个人搬不动，两个人就很轻松。孩子们发现，九鼎的亮，是因为大家的手拉在了一起。</p>
+
+                <h3 style="color: #ff9f1c; margin-top: 20px;">第五章：不看标不标准</h3>
+                <p>鹿蜀跳舞，随性而歌。芭蕾女孩明白，跳舞是为了快乐，不是为了评分。她放下了紧绷的脚尖，却跳出了最美的舞步。</p>
+
+                <h3 style="color: #ff9f1c; margin-top: 20px;">第六章：静得下来</h3>
+                <p>旋龟不说话，只听。调皮的小五坐不住，直到他听见了远处草丛里虫儿的叫声，听见了风吹过树叶的沙沙声。原来，安静也是一种力量。</p>
+
+                <h3 style="color: #ff9f1c; margin-top: 20px;">第七章：蓝色的火</h3>
+                <p>毕方的火是蓝色的。老严说：你越怕，火就越旺。跳过去，火就灭了。孩子们闭上眼，冲向了那片光。</p>
+
+                <h3 style="color: #ff9f1c; margin-top: 20px;">第八章：心里的歌</h3>
+                <p>凤皇听见了。哪怕没有开口的人，心里也有歌。默默找到了自己的旋律，虽然微弱，但那是属于她的九鼎之光。</p>
+
+                <h3 style="color: #ff9f1c; margin-top: 20px;">第九章：大雨中的九鼎</h3>
+                <p>最后一站，应龙行雨。九个孩子在雨中奔跑，鞋子里灌满了水，但火热的心让蒸汽升腾。九鼎齐鸣，神州大地，金光万丈。</p>
+                <p>老严在终点，拿着九双新鞋等着他们。</p>
+                <p>“爷爷，我们赢了吗？”</p>
+                <p>老严指着他们流汗的额头：“跑起来了，就是赢了。”</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="lyrics-modal" class="fairy-modal">
+        <div class="fairy-modal-content" style="max-width: 600px; padding: 30px; text-align: center;">
+            <span class="fairy-modal-close" onclick="document.getElementById('lyrics-modal').style.display='none'">&times;</span>
+            <h2 style="font-family: 'ZCOOL KuaiLe', cursive; color: #c1121f; margin-bottom: 20px;">跑起来就行</h2>
+            <div style="max-height: 60vh; overflow-y: auto; line-height: 2; color: #3a2010;">
+                <p>跑一跑，跳一跳，<br>风儿追，风儿闹。<br>爷爷笑，爷爷瞧，<br>跑起来，就很好。</p>
+                <p>跂踵跑，鸣蛇飞，<br>蠃鱼游，吉量背。<br>鹿蜀舞，转圈圈，<br>九鼎亮，闪光辉。</p>
+                <p>慢一慢，停一停，<br>等一等，听一听。<br>你帮我，我帮你，<br>一起跑，就胜利。</p>
+                <p>火蓝蓝，火旺旺，<br>跳过去，不慌张。<br>怕的事，丢一旁，<br>跳过去，就成长。</p>
+                <p>一二三，快快快，<br>跑起来，我最帅！</p>
+                <p style="margin-top: 20px; font-style: italic;">（2026年4月9日于石家庄）</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="video-modal" class="fairy-modal" onclick="hideVideoModal()">
+        <div class="fairy-modal-content" style="max-width: 900px; width: 95%; background: #000; border: 10px solid #ff9f1c; padding: 0;" onclick="event.stopPropagation()">
+            <span class="fairy-modal-close" style="position: absolute; right: 20px; top: 10px; z-index: 10; color: #fff;" onclick="hideVideoModal()">&times;</span>
+            <div id="video-modal-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;"></div>
+        </div>
+    </div>
+
+    <div id="beast-modal" class="fairy-modal" onclick="hideBeastModal()">
+        <div class="fairy-modal-content" onclick="event.stopPropagation()">
+            <span class="fairy-modal-close" onclick="hideBeastModal()">&times;</span>
+            <img id="beast-modal-img" src="" alt="">
+            <h2 id="beast-modal-title" style="font-family: 'ZCOOL KuaiLe', cursive; color: #c1121f; margin-top: 20px;"></h2>
+            <p id="beast-modal-desc" style="font-size: 1.2rem; color: #4a2e1a;"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
